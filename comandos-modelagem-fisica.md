@@ -22,7 +22,7 @@ CREATE TABLE noticias(
     titulo VARCHAR(150) NOT NULL,
     texto TEXT NOT NULL,
     resumo TEXT NOT NULL,
-    imagem TEXT NOT NULL,
+    imagem VARCHAR(45) NOT NULL,
     usuario_id INT NOT NULL
 );
 
