@@ -50,3 +50,10 @@ SELECT nome, email FROM usuarios WHERE tipo = 'admin'
 UPDATE usuarios SET tipo  = 'editor' WHERE id = 2;
 
 OBS: nunca se esqueça de passar uma condiçao para UPDATE!
+
+### DELETE em dados da tabela de usuários 
+
+DELETE FROM usuario WHERE id = 2;
+
+
+-- OBS: Nunca se esqueça de passar uma condição para o delete
