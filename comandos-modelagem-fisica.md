@@ -2,7 +2,7 @@
 
 ## Criar banco de dados
 
-CREATE DATABASE microblog_tiago CHARACTER SET utf8mb4;
+CREATE DATABASE microblog_nath CHARACTER SET utf8mb4;
 
 ## Criar tabela de usuários
 
