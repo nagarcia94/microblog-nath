@@ -38,14 +38,15 @@ VALUES(
  'editor');
 
 ```
-```sql
 ### SELECT na tabela de usuários 
+```sql
 <!-- o * significa selecionar TODOS os dados  -->
 
 SELECT * FROM usuarios; 
 SELECT nome, email FROM usuarios; 
 SELECT nome, email FROM usuarios WHERE tipo = 'admin'
-
+```
+```sql
 ### UPDATE em dados da tabela de usuários
 
 UPDATE usuarios SET tipo  = 'editor' WHERE id = 2;
