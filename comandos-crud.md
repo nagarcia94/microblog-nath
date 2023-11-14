@@ -46,23 +46,23 @@ SELECT * FROM usuarios;
 SELECT nome, email FROM usuarios; 
 SELECT nome, email FROM usuarios WHERE tipo = 'admin'
 ```
-```sql
 ### UPDATE em dados da tabela de usuários
+```sql
 
 UPDATE usuarios SET tipo  = 'editor' WHERE id = 2;
 
 OBS: nunca se esqueça de passar uma condiçao para UPDATE!
 ```
-```sql
 ### DELETE em dados da tabela de usuários 
+```sql
 
 DELETE FROM usuarios WHERE id = 2;
 ```
 -- OBS: Nunca se esqueça de passar uma condição para o delete
 
 
-```sql
 ### INSERT na tabela de noticias 
+```sql
 
 INSERT INTO noticias (titulo, resumo, texto, imagem, usuario_id)
 VALUES (
@@ -76,8 +76,7 @@ VALUES (
 
 );
 
-```
-```sql
+
 INSERT INTO noticias (titulo, resumo, texto, imagem, usuario_id)
 VALUES (
     'Palmeiras o Primeiro campeão mundial',
@@ -91,8 +90,6 @@ VALUES (
 
 );
 
-```
-```sql
 INSERT INTO noticias (titulo, resumo, texto, imagem, usuario_id)
 VALUES (
     'O mundo esta acabando',
@@ -107,10 +104,10 @@ VALUES (
 );
 ```
 
-```sql
 ### Objetivo: consulta que mostre a data e o titulo da noticia e o nome do autor desta noticia.
 
 #### SELECT COM JOIM (CONSULTA COM JUNÇAO DE TABELAS)
+```sql
 -- Especificamos o nome da coluna com o nome da tabela 
 
 SELECT 
