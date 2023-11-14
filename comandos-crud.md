@@ -10,7 +10,7 @@
 ## Exemplos
 
 ### INSERT na tabela de usuários 
-
+```sql 
 INSERT INTO usuarios (nome, email, senha, tipo)
 VALUES('Nathalia Garcia',
        '000nagarcia@gmail.com',
@@ -18,8 +18,7 @@ VALUES('Nathalia Garcia',
        'admin'
 );
 
-
-INSERT INTO usuarios(nome, email, senha, tipo)
+ INSERT INTO usuarios(nome, email, senha, tipo)
 VALUES(
  'Fulano da Silva',
  'fulano@gmail.com',
@@ -38,9 +37,11 @@ VALUES(
  'marreta',
  'editor');
 
-
+```
+```sql
 ### SELECT na tabela de usuários 
 <!-- o * significa selecionar TODOS os dados  -->
+
 SELECT * FROM usuarios; 
 SELECT nome, email FROM usuarios; 
 SELECT nome, email FROM usuarios WHERE tipo = 'admin'
@@ -50,15 +51,16 @@ SELECT nome, email FROM usuarios WHERE tipo = 'admin'
 UPDATE usuarios SET tipo  = 'editor' WHERE id = 2;
 
 OBS: nunca se esqueça de passar uma condiçao para UPDATE!
-
+```
+```sql
 ### DELETE em dados da tabela de usuários 
 
 DELETE FROM usuarios WHERE id = 2;
-
-
+```
 -- OBS: Nunca se esqueça de passar uma condição para o delete
 
 
+```sql
 ### INSERT na tabela de noticias 
 
 INSERT INTO noticias (titulo, resumo, texto, imagem, usuario_id)
@@ -73,7 +75,8 @@ VALUES (
 
 );
 
-
+```
+```sql
 INSERT INTO noticias (titulo, resumo, texto, imagem, usuario_id)
 VALUES (
     'Palmeiras o Primeiro campeão mundial',
@@ -87,7 +90,8 @@ VALUES (
 
 );
 
-
+```
+```sql
 INSERT INTO noticias (titulo, resumo, texto, imagem, usuario_id)
 VALUES (
     'O mundo esta acabando',
@@ -100,8 +104,9 @@ VALUES (
 
 
 );
+```
 
-
+```sql
 ### Objetivo: consulta que mostre a data e o titulo da noticia e o nome do autor desta noticia.
 
 #### SELECT COM JOIM (CONSULTA COM JUNÇAO DE TABELAS)
@@ -122,3 +127,4 @@ ON noticias.usuario_id = usuarios.id
 -- opcional (ordenação/classificação pela data)
 -- DESC indica ordem decrescente (mais recente vem primeiro)
 ORDER BY data DESC; -- opcional 
+```
