@@ -106,7 +106,7 @@ VALUES (
 
 ### Objetivo: consulta que mostre a data e o titulo da noticia e o nome do autor desta noticia.
 
-#### SELECT COM JOIM (CONSULTA COM JUNÇAO DE TABELAS)
+#### SELECT COM JOIN (CONSULTA COM JUNÇAO DE TABELAS)
 ```sql
 -- Especificamos o nome da coluna com o nome da tabela 
 
