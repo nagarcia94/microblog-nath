@@ -3,7 +3,7 @@
 $servidor = "localhost";
 $usuario = "root";
 $senha = "";
-$banco = "microblog-nath";
+$banco = "microblog_nath";
 
 
 
