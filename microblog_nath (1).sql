@@ -35,7 +35,7 @@ CREATE TABLE `noticias` (
   `titulo` varchar(150) NOT NULL,
   `texto` text NOT NULL,
   `resumo` text NOT NULL,
-  `imagem` text NOT NULL,
+  `imagem` varchar (45) NOT NULL,
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
