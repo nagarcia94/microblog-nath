@@ -18,7 +18,7 @@ mysqli_set_charset($conexao, "utf8");
 
 if(!$conexao){
     die("Deu ruim" .mysqli_connect_errno());
-
-}else {
-    echo "Beleza, conectado!";
 }
+// else {
+//     echo "Beleza, conectado!";
+// }
