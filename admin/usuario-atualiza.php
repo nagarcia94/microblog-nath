@@ -6,6 +6,22 @@ $id = $_GET['id'];
 
 /* Chamando a funcao e guardando o retorno dela */
 $usuario = lerUmUsuario($conexao, $id);
+
+// Verificando se o formulário foi acionado
+if(isset($_POST['atualizar'])){
+	// Capturando os dados
+	$nome = $_POST ['nome'];
+	$email = $_POST ['email'];
+	$tipo = $_POST ['tipo'];
+
+
+	/* Lógica para a senha: 
+	- Se o campo senha estiver vazio ou se a senha digitada for igual a senha que ja existe no banco de dados, então significa que o usuario nao alterou a senha, por tanto a senha se mantem a mesma.
+	
+	- Caso contrario, pegaremos a senha movel digitada e a codificamos antes de mandar para o banco. */
+
+}
+
 ?>
 
 
