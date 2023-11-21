@@ -16,9 +16,20 @@ if(isset($_POST['atualizar'])){
 
 
 	/* Lógica para a senha: 
-	- Se o campo senha estiver vazio ou se a senha digitada for igual a senha que ja existe no banco de dados, então significa que o usuario nao alterou a senha, por tanto a senha se mantem a mesma.
-	
-	- Caso contrario, pegaremos a senha movel digitada e a codificamos antes de mandar para o banco. */
+	- Se o campo senha estiver vazio ou se a senha digitada for igual a senha que ja existe no banco de dados, então significa que o usuario nao alterou a senha, por tanto a senha se mantem a mesma.*/
+	if (empty($_POST['senha'])|| password_verify($_POST['senha'],$usuario['senha'])){ 
+		$senha = $usuario ['senha']; /* matemos a mesma */
+		
+		/*- Caso contrario, pegaremos a senha movel digitada e a codificamos antes de mandar para o banco. */
+
+	} else {
+		$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+	}
+	// chamamos a função e passamos os dados.
+     atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo);
+    
+	 // Redirecionamos para a pagina de usuarios
+	 header("location.usuarios.php");
 
 }
 
