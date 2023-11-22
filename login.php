@@ -9,7 +9,18 @@ if(isset($_POST['entrar'])){
 	if(empty($_POST['email'])|| empty($_POST['senha'])){
 		header("location:login.php?campos_obrigatorios");
 		exit;
-	}
+	} 
+	/* capturar os dados digitados */
+	$email = mysqli_real_escape_string($conexao,$_POST['email']);
+	$senha = mysqli_real_escape_string($conexao,$_POST['senha']);
+
+	/* Buscando no banco atraves do banco do email se existe um usuario cadastrado */
+	$usuario = buscaUsuario($conexao,$email);
+
+	echo "<pre>";
+	var_dump($usuario);
+	echo "</pre>";
+
 }
 
 ?>
@@ -26,11 +37,11 @@ if(isset($_POST['entrar'])){
 
 				<div class="mb-3">
 					<label for="email" class="form-label">E-mail:</label>
-					<input class="form-control" type="email" id="email" name="email">
+					<input required class="form-control" type="email" id="email" name="email">
 				</div>
 				<div class="mb-3">
 					<label for="senha" class="form-label">Senha:</label>
-					<input class="form-control" type="password" id="senha" name="senha">
+					<input required class="form-control" type="password" id="senha" name="senha">
 				</div>
 
 				<button class="btn btn-primary btn-lg" name="entrar" type="submit">Entrar</button>
