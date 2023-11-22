@@ -11,7 +11,7 @@ if(isset($_GET['acesso_negado'])){
 } elseif (isset($_GET['dados_incorretos'])){
 	$mesangem = "Dados incorretos, verifique!";	
 
-}elseif (isset($_GET['sair'])){
+}elseif (isset($_GET['saiu'])){
 $mesangem = "Você saiu do sistema!"; 
 
 }elseif (isset($_GET['campos_obrigatorios'])){
