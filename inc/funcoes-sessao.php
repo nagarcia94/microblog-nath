@@ -21,11 +21,25 @@ function verificaAcesso (){
     if(!isset($_SESSION['id'])){
         // Portanto, destrua os dados de sessão, redirecionando para a página de login.php e para o script.
         session_destroy();
-        header("location../login.php?acesso_negado");
+        header("location:../login.php?acesso_negado");
         exit;
     }
 }
 
+function login($id,$nome, $tipo){
+  /* Criação de variavéis de sessão 
+  Recursos que ficam disponivéis para uso durante a sessão, ou seja enquanto o navegador não for fechado ou o usuario não clicar em Sair. */  
 
+  $_SESSION["id"]= $id;
+  $_SESSION["nome"]= $nome;
+  $_SESSION["tipo"]= $tipo;
+
+}
+
+function logout(){
+    session_destroy();
+    header("location:../login.php?saiu");
+    exit; 
+}
 
 ?>
