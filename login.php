@@ -3,6 +3,21 @@ require "inc/funcoes-sessao.php";
 require "inc/funcoes-usuarios.php"; 
 require "inc/cabecalho.php"; 
 
+/* Programaçao das msg de feedback de acordo com os paremetro de url/ condicional. */
+
+if(isset($_GET['acesso_negado'])){
+	$mesangem =  "Você deve logar primeiro!";
+
+} elseif (isset($_GET['dados_incorretos'])){
+	$mesangem = "Dados incorretos, verifique!";	
+
+}elseif (isset($_GET['sair'])){
+$mesangem = "Você saiu do sistema!"; 
+
+}elseif (isset($_GET['campos_obrigatorios'])){
+		$mesangem = "Preencha e-mail e senha!";
+}
+
 if(isset($_POST['entrar'])){
 	// Verificar se os campos estao vazios
 	// empty usa para verificar se o campo esta vazio.
@@ -30,7 +45,7 @@ if(isset($_POST['entrar'])){
 		// Caso contrario, senha está errada
 		header("location:login.php?dados_incorretos");
 		exit;
-		
+
 
 	}
 
@@ -45,9 +60,13 @@ if(isset($_POST['entrar'])){
 
         <form action="" method="post" id="form-login" name="form-login" class="mx-auto w-50" autocomplete="off">
 
+		<?php if(isset($mesangem) ){ ?>
+
 				<p class="my-2 alert alert-warning text-center">
-					Mensagens de feedback...
-				</p>                
+					<?=$mesangem?>
+				</p> 
+
+				<?php } ?>               
 
 				<div class="mb-3">
 					<label for="email" class="form-label">E-mail:</label>
