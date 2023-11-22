@@ -29,7 +29,7 @@ if(isset($_POST['atualizar'])){
      atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo);
     
 	 // Redirecionamos para a pagina de usuarios
-	 header("location.usuarios.php");
+	 header("location:usuarios.php");
 
 }
 

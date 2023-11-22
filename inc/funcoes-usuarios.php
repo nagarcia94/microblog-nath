@@ -41,10 +41,10 @@ function lerUmUsuario( $conexao, $id){
 }
 
 function atualizarUsuario ($conexao,$id, $nome, $email, $senha, $tipo){
-$sql = "UPDATE usuario SET
+$sql = "UPDATE usuarios SET
  nome = '$nome',
  email = '$email', 
- senha = '$senha'
+ senha = '$senha',
  tipo = '$tipo'
  WHERE id = $id";
 
