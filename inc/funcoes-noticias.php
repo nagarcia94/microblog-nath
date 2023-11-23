@@ -3,11 +3,12 @@ require "conecta.php";
 
 
 /* Usada em noticia-insere.php */
-function inserirNoticia($conexao)
-{
+function inserirNoticia( $conexao, $titulo, $texto, $resumo, $nomeImagem, $usuarioId){
 
-
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+    $sql = "INSERT INTO noticias (titulo, texto , resumo, imagem, usuario_id) 
+    VALUES( '$titulo', '$texto', '$resumo', '$nomeImagem', $usuarioId ) ";
+    
+mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
 } // fim inserirNoticia
 
@@ -15,6 +16,7 @@ function inserirNoticia($conexao)
 /* Usada em noticia-insere.php e noticia-atualiza.php */
 function upload($arquivo){
      
+
     // VALIDAÇÃO BACK-END
 
 
