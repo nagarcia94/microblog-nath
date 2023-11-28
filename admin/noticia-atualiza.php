@@ -12,6 +12,23 @@ $tipoUsuario = $_SESSION['tipo'];
 // Chamando a função e passando os parâmentros
 $noticia = lerUmaNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario);
 
+if(isset($_POST['atualizar'])){
+    $titulo = $_POST['titulo'];
+    $texto = $_POST['texto'];
+    $resumo = $_POST['resumo'];
+
+    // Lógica/ Algoritmo para a imagem
+    /* Se o campo estiver vazio, então significa que o usuario nao quer trocar imagem, entao o sisitema vai manter a mesma imagem existente */
+if(empty($_FILES['imagem']['name'])){
+$imagem = $_POST['imagem-existente'];
+} else {
+   /* Caso o usuario pegue a referencia do novo arquivo (nome e extensão ) fazemos o upload  */
+$imagem = $_FILES ['imagem']['name'];
+upload($_FILES['imagem']);
+
+}
+}
+
 ?>
 
 
