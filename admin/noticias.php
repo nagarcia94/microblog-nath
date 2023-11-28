@@ -1,5 +1,5 @@
 <?php 
-require_once "../inc/funcoes-noticias.php.php";
+require_once "../inc/funcoes-noticias.php";
 require_once "../inc/cabecalho-admin.php";
 
 // id do usuario logado
