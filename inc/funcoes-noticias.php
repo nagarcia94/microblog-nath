@@ -3,19 +3,20 @@ require "conecta.php";
 
 
 /* Usada em noticia-insere.php */
-function inserirNoticia( $conexao, $titulo, $texto, $resumo, $nomeImagem, $usuarioId){
+function inserirNoticia($conexao, $titulo, $texto, $resumo, $nomeImagem, $usuarioId)
+{
 
     $sql = "INSERT INTO noticias (titulo, texto , resumo, imagem, usuario_id) 
     VALUES( '$titulo', '$texto', '$resumo', '$nomeImagem', $usuarioId ) ";
-    
-mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
+    mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 } // fim inserirNoticia
 
 
 /* Usada em noticia-insere.php e noticia-atualiza.php */
-function upload($arquivo){
-     
+function upload($arquivo)
+{
+
 
     // VALIDAÇÃO BACK-END
 
@@ -25,8 +26,8 @@ function upload($arquivo){
         "image/png", "image/jpeg",
         "image/gif", "image/svg+xml"
     ];
-// Verificando se o tipo do aqeuivo NÃO È um dos suportados
-    if (!in_array($arquivo['type'], $tiposValidos)){
+    // Verificando se o tipo do aqeuivo NÃO È um dos suportados
+    if (!in_array($arquivo['type'], $tiposValidos)) {
         echo "<script>
     alert ('Formato inválido!'); history.back();
     </script>";
@@ -39,7 +40,7 @@ function upload($arquivo){
     $temporario = $arquivo['tmp_name'];
 
     // Definindo para onde a imagem vai com qual nome
-    $destino = "../imagens/" .$nome;
+    $destino = "../imagens/" . $nome;
 
     // movendo o arquivo da área temporaria para a pasta final
     move_uploaded_file($temporario, $destino);
@@ -50,11 +51,29 @@ function upload($arquivo){
 
 
 /* Usada em noticias.php */
-function lerNoticias($conexao)
-{
-
-
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+function lerNoticias($conexao, $idUsuario, $tipoUsuario)
+{ 
+    //Verificando se o tipo de usúario é admin
+    if ($tipoUsuario == 'admin') {
+        // SQL do admin: pode carregar/ver TUDO de TODOS
+ $sql = "SELECT 
+      noticias.id, 
+      noticias.titulo, 
+      noticias.data, 
+      usuarios.nome AS autor
+    FROM noticias JOIN usuarios
+    ON noticias.usuario_id = usuarios.id 
+    ORDER BY data DESC";
+    } else {
+        // SQl do editor : pode carregar/ver TUDO DELE SOMENTE
+        $sql = "SELECT id , titulo, data FROM noticias 
+        WHERE usuario_id = $idUsuario ORDER BY data DESC";
+    }
+// Executando a conculta e guardando o resultado dela
+    $resultado= mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+    
+// Retornando o resultado convertido em uma matriz/array
+    return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
 } // fim lerNoticias
 

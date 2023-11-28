@@ -8,7 +8,8 @@ $idUsuario = $_SESSION['id'];
 // tipo do usúario logado
 $tipoUsuario = $_SESSION['tipo'];
 
-echo $idUsuario, $tipoUsuario;
+// Chamando a função e passando os parâmetros
+$listaDeNoticias = lerNoticias($conexao, $idUsuario, $tipoUsuario);
 
 ?>
 
@@ -17,7 +18,7 @@ echo $idUsuario, $tipoUsuario;
 	<article class="col-12 bg-white rounded shadow my-1 py-4">
 		
 		<h2 class="text-center">
-		Notícias <span class="badge bg-dark">X</span>
+		Notícias <span class="badge bg-dark"> <?=count($listaDeNoticias)?> </span>
 		</h2>
 
 		<p class="text-center mt-5">
@@ -33,17 +34,29 @@ echo $idUsuario, $tipoUsuario;
 					<tr>
                         <th>Título</th>
                         <th>Data</th>
-                        <th>Autor</th>
+
+                        <?php if ($tipoUsuario == "admin"){ ?>
+						<th>Autor</th>
+						<?php } ?>
+
+
 						<th class="text-center">Operações</th>
 					</tr>
 				</thead>
 
 				<tbody>
 
+				<?php foreach ($listaDeNoticias as $noticia) { ?>
+
 					<tr>
-                        <td> Título da notícia... </td>
-                        <td> 21/12/2112 21:12 </td>
-                        <td> Autor da notícia... </td>
+                        <td> <?=$noticia['titulo']?></td>
+                        <td> <?=$noticia['data']?> </td> 
+
+						<?php if ($tipoUsuario == "admin"){ ?>
+						<th><?=$noticia['autor']?></th>
+						<?php } ?>
+
+
 						<td class="text-center">
 							<a class="btn btn-warning" 
 							href="noticia-atualiza.php">
@@ -56,7 +69,7 @@ echo $idUsuario, $tipoUsuario;
 							</a>
 						</td>
 					</tr>
-
+<?php } ?>
 				</tbody>                
 			</table>
 	</div>
