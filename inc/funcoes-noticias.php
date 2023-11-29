@@ -107,13 +107,26 @@ function lerUmaNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario){
 
 
 /* Usada em noticia-atualiza.php */
-function atualizarNoticia($conexao)
-{
+function atualizarNoticia($conexao, $titulo, $texto, $resumo, $imagem, $idNoticia, $idUsuario, $tipoUsuario){
+    
+    if($tipoUsuario == 'admin'){
+        // SQL do admin: pode atualizar QUALQUER notícia
+        $sql = "UPDATE noticias SET
+                    titulo = '$titulo', texto = '$texto',
+                    resumo = '$resumo', imagem = '$imagem'
+                WHERE id = $idNoticia";
+    } else {
+        // SQL do editor: pode atualizar SOMENTE as dele
+        $sql = "UPDATE noticias SET
+                    titulo = '$titulo', texto = '$texto',
+                    resumo = '$resumo', imagem = '$imagem'
+                WHERE id = $idNoticia 
+                    AND usuario_id = $idUsuario";
+    }
 
+    mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
-
-} // fim atualizarNoticia
+} // fim atualizarNoticia // fim atualizarNoticia
 
 
 /* Usada em noticia-exclui.php */
