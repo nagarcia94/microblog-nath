@@ -151,7 +151,8 @@ function lerTodasAsNoticias($conexao)
 {
     $sql = "SELECT titulo, resumo, imagem, id 
 FROM noticias 
-ORDER BY data DESC ";
+ORDER BY data DESC "; 
+
 
     $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
     return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
@@ -161,8 +162,24 @@ ORDER BY data DESC ";
 
 
 /* Usada em noticia.php */
-function lerDetalhes($conexao)
+function lerDetalhes($conexao, $id)
 {
+    $sql = "SELECT noticias.id, 
+    noticias.titulo, 
+    noticias.data,
+    noticias.texto, 
+    noticias.imagem, 
+    usuarios.nome AS autor
+  FROM noticias JOIN usuarios
+  ON noticias.usuario_id = usuarios.id WHERE noticias.id = $id ";
+
+   
+
+    $resultado = mysqli_query($conexao,$sql) or die (mysqli_errno($conexao));
+    return mysqli_fetch_assoc($resultado);
+    
+
+    
 
 
     // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
