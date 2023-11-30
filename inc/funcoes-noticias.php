@@ -164,7 +164,8 @@ ORDER BY data DESC ";
 /* Usada em noticia.php */
 function lerDetalhes($conexao, $id)
 {
-    $sql = "SELECT noticias.id, 
+    $sql = "SELECT 
+    noticias.id, 
     noticias.titulo, 
     noticias.data,
     noticias.texto, 
@@ -182,7 +183,6 @@ function lerDetalhes($conexao, $id)
     
 
 
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
 } // fim lerDetalhes
 

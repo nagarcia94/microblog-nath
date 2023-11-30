@@ -64,8 +64,8 @@ if (isset($_POST['atualizar'])) {
             <div class="mb-3">
                 <label for="imagem-existente" class="form-label">Imagem da notícia:</label>
                 <!-- campo somente leitura, meramente informativo -->
-                <input value="<?= $noticia['imagem'] ?>">
-                <input class="form-control" type="text" id="imagem-existente" name="imagem-existente" readonly>
+                
+                <input value="<?= $noticia['imagem'] ?>" class="form-control" type="text" id="imagem-existente" name="imagem-existente" readonly>
             </div>
 
             <div class="mb-3">
