@@ -3,7 +3,7 @@ require_once "../inc/funcoes-noticias.php";
 require_once "../inc/cabecalho-admin.php";
 
 /* Capturar o id da noticia que foi trasmitido via URL */
-$idNoticia = $_GET['id'];
+$idNoticia = mysqli_real_escape_string ($conexao, $_GET['id']);
 
 // Capturando o usuario logado(id) e o tipo dele (tipo)
 $idUsuario = $_SESSION['id'];
@@ -13,9 +13,9 @@ $tipoUsuario = $_SESSION['tipo'];
 $noticia = lerUmaNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario);
 
 if (isset($_POST['atualizar'])) {
-    $titulo = $_POST['titulo'];
-    $texto = $_POST['texto'];
-    $resumo = $_POST['resumo'];
+    $titulo = htmlspecialchars( $_POST['titulo']);
+    $texto = htmlspecialchars( $_POST['texto']);
+    $resumo = htmlspecialchars( $_POST['resumo']);
 
     // Lógica/ Algoritmo para a imagem
     /* Se o campo estiver vazio, então significa que o usuario nao quer trocar imagem, entao o sisitema vai manter a mesma imagem existente */
