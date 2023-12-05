@@ -3,7 +3,8 @@ require "inc/funcoes-noticias.php";
 require "inc/cabecalho.php"; 
 
 /* Capturar o id da noticia que foi trasmitido via URL */
-$idNoticia = $_GET['id'];
+// Tratamento de escape de strings usando o mysqli real escape.
+$idNoticia = mysqli_real_escape_string($conexao, $_GET['id']);
 
 // Chamando a função
 $dadosDaNoticia = lerDetalhes ($conexao, $idNoticia);
