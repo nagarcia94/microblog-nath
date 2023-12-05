@@ -28,7 +28,7 @@ $resultadoDaBusca = busca($conexao, $termoDigitado);
                     <?=$noticia['resumo']?>
                 </p>
                 
-                <a href="noticia.php" class="btn btn-primary btn-sm"><?=$noticia['id']?></a>
+                <a href="noticia.php?id=<?=$noticia['id']?>" class="btn btn-primary btn-sm">Continuar lendo </a>
             </div>
         </article>
     </div>
